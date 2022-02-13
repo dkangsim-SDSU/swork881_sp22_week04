@@ -1,0 +1,102 @@
+---
+title:  'Coding Challenge #4'
+subtitle: 'SWORK 881'
+author:
+- name: Student -  [Your name goes here]
+output: html_document
+---
+
+## load libraries
+```{r}
+
+```
+
+## load dataset
+```{r}
+
+
+
+```
+
+
+#data wrangling
+
+We will be creating new variables: 
+`anxiety` = clincally significant symptoms of anxiety; score 3 or more on PHQ-4 items 1 & 2
+`depression` = clinically significant symptoms of depression; score of 3 or mroe on PHQ-4 items 3 & 4 
+`distress` = continuous PHQ-4 score; higher score indicate greater distress
+`distress_type` = multinomial variable: 0- none; 1- anxiety; 2- dep; 3- anxiety & dep
+(hint: use `str_c(var1, '', var2)` to concatenate two values by rows)
+`distress_cat` = categorizing distress score into min:4 ~ 'low'; 5:8 ~ 'mid'; 8:max ~ 'high'
+(hint: use `%in%`)
+`age_sd` = standardized `age` variable
+
+
+```{r}
+
+
+```
+
+Report frequency of `distress_type`
+> [ Answer goes here  ].
+
+_hint_: your **none** category must have $n=322$; if you do not have this, check your code again.
+
+
+Report frequency of `distress_cat`
+> [ Answer goes here ].
+
+_hint_: your **mid** category must have $n=170$; if you do not have this, check your code again.
+
+---
+## multinomial logistic regression
+
+Run multinomial regression where DV is `distress_type`. Use `anxiety` as your reference category. 
+Use your typical list of independent variables (standardized age, sex, education). 
+ 
+_hint_: use `nnet` package's `multinom` function
+
+```{r}
+
+```
+
+Please note your interpretation unit and your outcome unit must be the same. If needed, trasnform your output to facilitate  your interpretation.
+
+Focusing on those who reported both _anxiety_ **AND** _depression_ as your outcome level of interest, provide your interpretation below:
+> [Provide your interpretation here]
+
+
+---
+## ordinal logistic regression
+
+Run ordinal regression where DV is `distress_cat`. Use your typical list of independent variables (standardized age, sex, education).
+
+```{r}
+
+
+```
+To the best of your knowledge, provide explanation of the result. 
+
+> [Provide your description of the result here]
+
+
+---
+## splines!
+
+Run linear regression where DV is `distress`. For your standardized age variable, locate knot points at `-0.5`, `0`, and `0.5`. 
+
+```{r}
+
+```
+
+Provide your interpretation below:
+> [Provide your interpretation here]
+
+
+Run logistic regression where DV is `depression`. For your standardized age variable, locate knot points at  `-1`, `0`, and `1`. 
+
+```{r}
+
+```
+Provide your interpretation below:
+> [Provide your interpretation here]
